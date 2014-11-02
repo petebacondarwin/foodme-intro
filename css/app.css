@@ -1,0 +1,31 @@
+
+.price, .rating {
+  min-width: 10em;
+}
+
+
+.price .glyphicon:hover, .rating .glyphicon:hover {
+  text-shadow: white 0 0  2px,
+  white 0 0  2px,
+  white 0 0  2px,
+  white 0 0  2px,
+  blue  0 0 10px;
+}
+
+
+/* Animations */
+.fade {
+  -webkit-transition:all linear .5s;
+  -moz-transition:all linear 0.5s;
+  -o-transition:all linear 0.5s;
+  transition:all linear .5s;
+  opacity: 1;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+
+.fade.ng-hide, .fade.ng-hide-active {
+  opacity: 0;
+  max-height: 0px;
+}
