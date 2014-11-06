@@ -24,7 +24,8 @@ angular.module('rating', [])
 
     template:
       '<ul class="fm-rating">' +
-      '  <li ng-repeat="value in ratings" ng-click="select(value)" ng-class="{selected: isSelected(value)}">' +
+      '  <li ng-repeat="value in ratings" ng-click="select(value)" ' +
+      '      ng-class="{selected: isSelected(value)}">' +
       '    <span class="glyphicon glyphicon-{{glyph}}"></span>' +
       '  </li>' +
       '</ul>' +
