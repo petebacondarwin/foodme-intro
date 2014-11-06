@@ -4,7 +4,8 @@ angular.module('localStorage', [])
 .value('localStorage', window.localStorage)
 
 
-.factory('localStorageBinding', ['localStorage', '$rootScope', function(localStorage, $rootScope) {
+.factory('localStorageBinding', ['localStorage', '$rootScope',
+                            function(localStorage, $rootScope) {
 
   return function(key, defaultValue) {
     defaultValue = JSON.stringify(defaultValue || {});
