@@ -46,7 +46,7 @@ $scope.$watchGroup(['filters.price', 'filters.rating', 'restaurants'], function 
 });
 ```js
 
-* Change the `ng-repeat` directive to use the `filteredRestaurants`.
+* Change the `ng-repeat` directive to use the `filteredRestaurants`
 
 ```html
 <tr ng-repeat="restaurant in filteredRestaurants | orderBy : sortProperty : sortDirection">

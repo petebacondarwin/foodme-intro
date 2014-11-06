@@ -1,7 +1,5 @@
 # Step 9
 
-## file system app and remote hosted data
-
 Static mock restaurant list, with locally persisted delivery info
 
 Load the restaurant data from a server
@@ -12,7 +10,9 @@ Load the restaurant data from a server
 .controller('FoodMeController', ['$scope', 'localStorageBinding', '$http', function($scope, localStorageBinding, $http) {
 ```
 
-* replace the static data with a call to get the restaurant data from a REST service (https://foodme.firebaseio.com/.json)
+## File system app and remote CORS enabled data server
+
+* Replace the static data with a call to get the restaurant data from a REST service (https://foodme.firebaseio.com/.json)
 
 ```js
   $http.get('https://foodme.firebaseio.com/.json').then(function(response) {
@@ -20,10 +20,7 @@ Load the restaurant data from a server
   });
 ```
 
-
-# Step 9 (alternate)
-
-## locally http hosted app and data
+## Locally hosted http server app and data
 
 * Install a local webserver
 
@@ -38,7 +35,7 @@ cd foodme-intro
 http-server
 ```
 
-* Browse the application via this server: `http://localhost:8080/step-9`
+* Browse to the application via this server: `http://localhost:8080/step-9`
 * Now you can get the restaurant data from the local server
 
 ```js

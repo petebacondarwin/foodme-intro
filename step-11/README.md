@@ -2,7 +2,7 @@
 
 List of restaurants retrieved from server, sortable and filterable
 
-Add cool rating directive for use in filtering:
+Add a cool rating directive for use in filtering:
 
 * Create a new file `rating.js` containing a `rating` module
 
@@ -23,7 +23,7 @@ angular.module('rating', [])
 angular.module('app', ['ngMessages', 'localStorage', 'rating'])
 ```
 
-* Define a `fmRating` directive in the `rating` module.
+* Define a `fmRating` directive in the `rating` module
 
 ```js
 .directive('fmRating', function() {
