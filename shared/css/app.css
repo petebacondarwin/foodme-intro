@@ -43,12 +43,15 @@
   -o-transition:all linear 0.5s;
   transition:all linear .5s;
   opacity: 1;
-  max-height: 300px;
   overflow: hidden;
+}
+
+
+.fade .abs {
+  position: absolute;
 }
 
 
 .fade.ng-hide, .fade.ng-hide-active {
   opacity: 0;
-  max-height: 0px;
 }

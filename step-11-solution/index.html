@@ -5,10 +5,10 @@
   <title>Angular FoodMe</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/bootstrap-cerulean.css">
-  <link rel="stylesheet" href="../css/app.css">
-  <script src="../js/angular.js"></script>
-  <script src="../js/angular-messages.js"></script>
+  <link rel="stylesheet" href="../shared/css/bootstrap-cerulean.css">
+  <link rel="stylesheet" href="../shared/css/app.css">
+  <script src="../shared/js/angular.js"></script>
+  <script src="../shared/js/angular-messages.js"></script>
   <script src="app.js"></script>
   <script src="localStorage.js"></script>
   <script src="rating.js"></script>
@@ -71,11 +71,13 @@
         <legend>Filter Restaurants</legend>
         <div class="form-group">
           <label for="priceFilter" class="control-label">Price (no more than)</label>
-          <fm-rating rating="filters.price" glyph="gbp"></fm-rating>
+          <fm-rating rating="filters.price" glyph="gbp"
+              on-select="logMessage()"></fm-rating>
         </div>
         <div class="form-group">
           <label for="ratingFilter" class="control-label">Rating (at least)</label>
           <fm-rating rating="filters.rating" glyph="star"></fm-rating>
+          <input type="number" ng-model="filters.rating">
         </div>
       </form>
     </div>
@@ -93,7 +95,7 @@
           <td class="description">
             <div class="media">
               <a class="pull-left">
-                <img class="img-rounded" ng-src="../img/restaurants/{{restaurant.id}}.jpg">
+                <img class="img-rounded" ng-src="../shared/img/restaurants/{{restaurant.id}}.jpg">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">{{restaurant.name}}</h4>

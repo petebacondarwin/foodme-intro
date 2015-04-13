@@ -7,7 +7,7 @@ Add transition animations to the delivery form:
 * load `../js/angular-animate.js` file
 
 ```
-<script src="../js/angular-animate.js"></script>
+<script src="../shared/js/angular-animate.js"></script>
 ```
 
 * Add a dependency on `ngAnimate` to the `app` module:

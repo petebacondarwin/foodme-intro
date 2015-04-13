@@ -6,7 +6,8 @@ angular.module('rating', [])
 
     scope: {
       glyph: '@',
-      rating: '='
+      rating: '=',
+      onSelect: '&'
     },
 
     link: function(scope, element, attrs) {
@@ -15,6 +16,7 @@ angular.module('rating', [])
 
       scope.select = function(value) {
         scope.rating = value;
+        scope.onSelect();
       };
 
       scope.isSelected = function(value) {

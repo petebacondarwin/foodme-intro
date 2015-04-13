@@ -55,7 +55,7 @@ $scope.restaurants = [
   <td class="description">
     <div class="media">
       <a class="pull-left">
-        <img class="img-rounded" ng-src="../img/restaurants/{{restaurant.id}}.jpg">
+        <img class="img-rounded" ng-src="../shared/img/restaurants/{{restaurant.id}}.jpg">
       </a>
       <div class="media-body">
         <h4 class="media-heading">{{restaurant.name}}</h4>
