@@ -1,4 +1,4 @@
-# Step 11
+# Step 12
 
 List of restaurants retrieved from server, sortable and filterable
 
@@ -20,7 +20,7 @@ angular.module('rating', [])
 * Add the `rating` module as a dependency of our `app` module
 
 ```js
-angular.module('app', ['ngMessages', 'localStorage', 'rating'])
+angular.module('app', ['ngMessages', 'ngMessageFormat', 'localStorage', 'rating'])
 ```
 
 * Define a `fmRating` directive in the `rating` module
@@ -62,5 +62,5 @@ angular.module('app', ['ngMessages', 'localStorage', 'rating'])
 * Use this directive in the **Filter Restaurants** form instead of the input boxes
 
 ```html
-<fm-rating rating="filters.price" glyph="gbp"></fm-rating>
+<fm-rating rating="app.filters.price" glyph="gbp"></fm-rating>
 ```
