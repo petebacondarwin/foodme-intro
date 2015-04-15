@@ -21,7 +21,7 @@
 
 
   <!-- Delivery Info Form -->
-  <div class="row" ng-show="app.deliveryForm.visible">
+  <div class="row" ng-show="app.deliveryFormVisible">
     <div class="col-md-12">
       <form role="form" class="well">
         <a href="" class="pull-right" ng-click="app.hideDeliveryForm()">Hide</a>
@@ -40,7 +40,7 @@
 
 
   <!-- Delivery Info -->
-  <div class="row" ng-hide="app.deliveryForm.visible">
+  <div class="row" ng-hide="app.deliveryFormVisible">
     <div class="col-md-12">
       <div class="well">
         <a href="" class="pull-right" ng-click="app.showDeliveryForm()">Change</a>

@@ -2,9 +2,7 @@ angular.module('app', [])
 
 .controller('AppController', function() {
 
-  this.deliveryForm = {
-    visible: true
-  };
+  this.deliveryFormVisible = true;
 
   this.user = {
     name: 'Jo Bloggs',
@@ -12,11 +10,11 @@ angular.module('app', [])
   };
 
   this.showDeliveryForm = function() {
-    this.deliveryForm.visible = true;
+    this.deliveryFormVisible = true;
   };
 
   this.hideDeliveryForm = function() {
-    this.deliveryForm.visible = false;
+    this.deliveryFormVisible = false;
   };
 
 });
