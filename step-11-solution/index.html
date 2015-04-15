@@ -71,17 +71,23 @@
         <legend>Filter Restaurants</legend>
         <div class="form-group">
           <label for="priceFilter" class="control-label">Price (no more than)</label>
-          <fm-rating rating="filters.price" glyph="gbp"
-              on-select="logMessage()"></fm-rating>
+          <fm-rating rating="filters.price" glyph="gbp"></fm-rating>
         </div>
         <div class="form-group">
           <label for="ratingFilter" class="control-label">Rating (at least)</label>
           <fm-rating rating="filters.rating" glyph="star"></fm-rating>
-          <input type="number" ng-model="filters.rating">
         </div>
       </form>
     </div>
     <div class="col-md-9">
+      <div class="alert alert-info" role="alert">
+        <ng-pluralize
+          count="filteredRestaurants.length"
+          when="{'0'    : 'No restaurants found.',
+                 'one'  : 'Only 1 restaurant found!',
+                 'other': '{} restaurants found!'}">
+        </ng-pluralize>
+      </div>
       <table class="table table-striped">
         <thead>
         <tr>

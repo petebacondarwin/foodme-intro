@@ -2,6 +2,10 @@ angular.module('app', ['ngMessages', 'localStorage', 'rating'])
 
 .controller('FoodMeController', ['$scope', 'localStorageBinding', '$http', function($scope, localStorageBinding, $http) {
 
+  $scope.logMessage = function() {
+    console.log('selected');
+  };
+
   $scope.$evalAsync('deliveryForm.visible = true');
 
   $scope.user = localStorageBinding('foodMe/user', {

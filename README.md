@@ -10,5 +10,5 @@
 * Step 8 - Persist the delivery info in the local storage
 * Step 9 - Load restaurant list from a server
 * Step 10 - Filter the restaurant list by price and rating
-* Step 11 - Create a template directive for setting the price and rating filters
-* Step 12 - Display the number of filtered restaurants
+* Step 11 - Display the number of filtered restaurants
+* Step 12 - Create a template directive for setting the price and rating filters

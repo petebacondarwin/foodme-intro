@@ -11,6 +11,7 @@
   <script src="../shared/js/angular-messages.js"></script>
   <script src="app.js"></script>
   <script src="localStorage.js"></script>
+  <script src="rating.js"></script>
 </head>
 <body class="container" ng-app="app" ng-controller="FoodMeController">
 
@@ -70,11 +71,11 @@
         <legend>Filter Restaurants</legend>
         <div class="form-group">
           <label for="priceFilter" class="control-label">Price (no more than)</label>
-          <input type="number" id="priceFilter" name="priceFilter" class="form-control" ng-model="filters.price">
+          <fm-rating rating="filters.price" glyph="gbp"></fm-rating>
         </div>
         <div class="form-group">
           <label for="ratingFilter" class="control-label">Rating (at least)</label>
-          <input type="number" id="ratingFilter" name="ratingFilter" class="form-control" ng-model="filters.rating">
+          <fm-rating rating="filters.rating" glyph="star"></fm-rating>
         </div>
       </form>
     </div>

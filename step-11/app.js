@@ -1,4 +1,4 @@
-angular.module('app', ['ngMessages', 'localStorage'])
+angular.module('app', ['ngMessages', 'localStorage', 'rating'])
 
 .controller('FoodMeController', ['$scope', 'localStorageBinding', '$http', function($scope, localStorageBinding, $http) {
 
