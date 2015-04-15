@@ -117,10 +117,11 @@
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 314px; height: auto;" data-block-id="b88439cd5c6740fc169c9f7151e6b719"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
 <ul>
-	<li>create an `app` module and a `FoodMeController` controller in `app.js`</li>
+	<li>create an `app` module and a `AppController` controller in `app.js`</li>
 	<li>load the `app.js` file in the index.html page</li>
-	<li>initialize the scope with a deliveryForm object</li>
-	<li>add `showDeliveryForm()` and `hideDeliveryForm()` helper methods to `FoodMeController`</li>
+	<li>initialize the controller with a `deliveryForm` object</li>
+	<li>add `showDeliveryForm()` and `hideDeliveryForm()` methods to `AppController`</li>
+  <li>connect the `AppController` to the view using `ng-controller`</li>
 </ul>
 </div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="5a1744f8a0909568acc36f09fd91043d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
 <h2>Scope Hierarchy</h2>
@@ -152,7 +153,7 @@
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 314px; height: auto;" data-block-id="6e7209ce982e5ca3feb58481c642d746"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
 <ul>
-	<li>Initialize a mock list of restaurants on the scope in the `FoodMeController`</li>
+	<li>Initialize a mock list of restaurants on the scope in the `AppController`</li>
 	<li>Bind the template to the list of restaurants using `ng-repeat` directive</li>
 </ul>
 </div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="1677d7983db385b583cf0bb2ad839b92"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
@@ -302,7 +303,7 @@
 		</div>
 
 
-		
+
 <script>
 	var SLConfig = {"current_user":{"id":30405,"username":"petebd","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/9a952bcf6fd701bb1303cd9f64cf9620?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","pro":false,"enterprise":false,"enterprise_manager":false,"registered":true,"email":"pete@bacondarwin.com","notify_on_receipt":false,"billing_address":null,"editor_tutorial_completed":false,"settings":{"id":21442,"present_controls":true,"present_upsizing":true,"editor_grid":true,"editor_snap":true,"developer_mode":false}},"deck":{"id":277596,"slug":"introduction-to-angularjs--2","title":"Copy of Introduction to AngularJS","description":"","visibility":"all","published_at":"2014-11-06T13:38:01.656Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/petebd/ab7d7c/introduction-to-angularjs.jpg","view_count":21,"user":{"id":30405,"username":"petebd","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/9a952bcf6fd701bb1303cd9f64cf9620?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","pro":false,"enterprise":false,"enterprise_manager":false,"registered":true},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"rtl":false,"version":2,"access_token":"BKQ5P47D5zwxXNToyGcpxBpU4hMr","notes":{}}};
 </script>
@@ -342,7 +343,7 @@
 
 		</script>
 
-		
+
 
 	</body>
 </html>
