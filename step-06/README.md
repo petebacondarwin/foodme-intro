@@ -9,7 +9,7 @@ Create custom filter to display price and rating better:
 
 ```js
 
-.filter('rating', ['$sce', function($sce) {
+.filter('rating', function($sce) {
   return function(value, glyph) {
     var output = "";
     while(value>0) {
@@ -18,7 +18,7 @@ Create custom filter to display price and rating better:
     }
     return $sce.trustAsHtml(output);
   };
-}]);
+});
 
 ```
 

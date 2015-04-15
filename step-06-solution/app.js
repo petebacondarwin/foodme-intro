@@ -76,7 +76,7 @@ angular.module('app', [])
 })
 
 
-.filter('rating', ['$sce', function($sce) {
+.filter('rating', function($sce) {
   return function(value, glyph) {
     var output = "";
     while(value>0) {
@@ -85,4 +85,4 @@ angular.module('app', [])
     }
     return $sce.trustAsHtml(output);
   };
-}]);
+});
