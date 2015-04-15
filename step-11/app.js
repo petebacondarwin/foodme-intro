@@ -1,70 +1,74 @@
-angular.module('app', ['ngMessages', 'localStorage', 'rating'])
+angular.module('app', ['ngMessages', 'localStorage'])
 
-.controller('FoodMeController', ['$scope', 'localStorageBinding', '$http', function($scope, localStorageBinding, $http) {
+.controller('AppController', function(localStorageBinding, $http, $rootScope) {
 
-  $scope.$evalAsync('deliveryForm.visible = true');
+  this.deliveryFormVisible = true;
 
-  $scope.user = localStorageBinding('foodMe/user', {
+  this.user = localStorageBinding('foodMe/user', {
     name: 'Jo Bloggs',
     address: '123, Some Place, Some Where'
   });
 
-  $scope.showDeliveryForm = function() {
-    $scope.deliveryForm.visible = true;
+  this.showDeliveryForm = function() {
+    this.deliveryFormVisible = true;
   };
 
-  $scope.hideDeliveryForm = function() {
-    $scope.deliveryForm.visible = false;
+  this.hideDeliveryForm = function() {
+    this.deliveryFormVisible = false;
   };
 
 
-  // $http.get('https://foodme.firebaseio.com/.json').then(function(response) {
-  //   $scope.restaurants = response.data;
-  // });
+  var that = this;
+  var url = 'https://foodme.firebaseio.com/.json'; // CORS enabled server
+  // var url = '../shared/data/restaurants.json'; // Local webserver
 
-  $http.get('../data/restaurants.json').then(function(response) {
-    $scope.restaurants = response.data;
+  $http.get(url).then(function(response) {
+    that.restaurants = response.data;
   });
 
-  $scope.sortProperty = 'name';
-  $scope.sortDirection = false;
 
-  $scope.sortBy = function(property) {
-    if ( $scope.sortProperty === property ) {
-      $scope.sortDirection = !$scope.sortDirection;
+  this.sortProperty = 'name';
+  this.sortDirection = false;
+
+  this.sortBy = function(property) {
+    if ( this.sortProperty === property ) {
+      this.sortDirection = !this.sortDirection;
     } else {
-      $scope.sortProperty = property;
-      $scope.sortDirection = false;
+      this.sortProperty = property;
+      this.sortDirection = false;
     }
   };
 
-  $scope.getSortClass = function(property) {
-    if ( $scope.sortProperty === property ) {
-      return 'glyphicon glyphicon-chevron-' + ($scope.sortDirection ? 'down' : 'up');
+  this.getSortClass = function(property) {
+    if ( this.sortProperty === property ) {
+      return 'glyphicon glyphicon-chevron-' + (this.sortDirection ? 'down' : 'up');
     }
   };
 
-  $scope.filters = {
+  this.filters = {
     price: null,
     rating: null
   };
 
-
-  $scope.$watchGroup(['filters.price', 'filters.rating', 'restaurants'], function filterRestaurants() {
-    $scope.filteredRestaurants = [];
-    angular.forEach($scope.restaurants, function(restaurant) {
-      if ( ( !$scope.filters.rating || restaurant.rating >= $scope.filters.rating ) &&
-           ( !$scope.filters.price || restaurant.price <= $scope.filters.price ) )
-      {
-        $scope.filteredRestaurants.push(restaurant);
+  var filterRestaurants = function() {
+    that.filteredRestaurants = [];
+    angular.forEach(that.restaurants, function(restaurant) {
+      if ( ( !that.filters.rating || restaurant.rating >= that.filters.rating ) &&
+           ( !that.filters.price || restaurant.price <= that.filters.price ) ) {
+        that.filteredRestaurants.push(restaurant);
       }
     });
-  });
+  };
 
-}])
+  $rootScope.$watchGroup([
+      function() { return that.filters.price; },
+      function() { return that.filters.rating; },
+      function() { return that.restaurants; }
+    ], filterRestaurants);
+})
 
 
-.filter('rating', ['$sce', function($sce) {
+.filter('rating', function($sce) {
   return function(value, glyph) {
     var output = "";
     while(value>0) {
@@ -73,4 +77,4 @@ angular.module('app', ['ngMessages', 'localStorage', 'rating'])
     }
     return $sce.trustAsHtml(output);
   };
-}]);
+});
