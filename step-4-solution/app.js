@@ -1,26 +1,26 @@
 angular.module('app', [])
 
-.controller('FoodMeController', ['$scope', function($scope) {
+.controller('AppController', function() {
 
-  $scope.deliveryForm = {
+  this.deliveryForm = {
     visible: true
   };
 
-  $scope.user = {
+  this.user = {
     name: 'Jo Bloggs',
     address: '123, Some Place, Some Where'
   };
 
-  $scope.showDeliveryForm = function() {
-    $scope.deliveryForm.visible = true;
+  this.showDeliveryForm = function() {
+    this.deliveryForm.visible = true;
   };
 
-  $scope.hideDeliveryForm = function() {
-    $scope.deliveryForm.visible = false;
+  this.hideDeliveryForm = function() {
+    this.deliveryForm.visible = false;
   };
 
 
-  $scope.restaurants = [
+  this.restaurants = [
     {
       "price": 3,
       "rating": 3,
@@ -57,4 +57,4 @@ angular.module('app', [])
   ];
 
 
-}]);
+});

@@ -10,7 +10,7 @@
   <script src="../shared/js/angular.js"></script>
   <script src="app.js"></script>
 </head>
-<body class="container" ng-app="app" ng-controller="FoodMeController">
+<body class="container" ng-app="app" ng-controller="AppController as app">
 
   <!-- Navigation Bar -->
   <div class="navbar navbar-default">
@@ -21,18 +21,18 @@
 
 
   <!-- Delivery Info Form -->
-  <div class="row" ng-show="deliveryForm.visible">
+  <div class="row" ng-show="app.deliveryForm.visible">
     <div class="col-md-12">
       <form role="form" class="well">
-        <a href="" class="pull-right" ng-click="hideDeliveryForm()">Hide</a>
+        <a href="" class="pull-right" ng-click="app.hideDeliveryForm()">Hide</a>
         <legend>Delivery Details</legend>
         <div class="form-group">
           <label for="customerName" class="control-label">Name</label>
-          <input type="text" id="customerName" class="form-control" ng-model="user.name">
+          <input type="text" id="customerName" class="form-control" ng-model="app.user.name">
         </div>
         <div class="form-group">
           <label for="address" class="control-label">Address</label>
-          <input type="text" id="address" class="form-control" ng-model="user.address">
+          <input type="text" id="address" class="form-control" ng-model="app.user.address">
         </div>
       </form>
     </div>
@@ -40,13 +40,13 @@
 
 
   <!-- Delivery Info -->
-  <div class="row" ng-hide="deliveryForm.visible">
+  <div class="row" ng-hide="app.deliveryForm.visible">
     <div class="col-md-12">
       <div class="well">
-        <a href="" class="pull-right" ng-click="showDeliveryForm()">Change</a>
+        <a href="" class="pull-right" ng-click="app.showDeliveryForm()">Change</a>
         <strong>Deliver to:</strong><br>
-        {{ user.name }}<br>
-        {{ user.address }}
+        {{ app.user.name }}<br>
+        {{ app.user.address }}
       </div>
     </div>
   </div>

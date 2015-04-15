@@ -4,13 +4,13 @@ Simple structured app with code in app.js
 
 Add a list of restaurants to choose from:
 
-* Initialize a mock list of restaurants on the scope in the `FoodMeController`
+* Initialize a mock list of restaurants in the `AppController`
 * Bind the template to the list of restaurants using `ng-repeat` directive
 
 
 ```js
 
-$scope.restaurants = [
+this.restaurants = [
   {
     "price": 3,
     "rating": 3,
@@ -51,7 +51,7 @@ $scope.restaurants = [
 
 ```js
 
-<tr ng-repeat="restaurant in restaurants">
+<tr ng-repeat="restaurant in app.restaurants">
   <td class="description">
     <div class="media">
       <a class="pull-left">
