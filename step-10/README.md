@@ -8,24 +8,24 @@ Filter the restaurants by price and rating:
 
 ```html
 <div class="col-md-3">
-  <form role="form" class="well" name="filterForm">
+  <form role="form" class="well" name="app.filterForm">
     <legend>Filter Restaurants</legend>
     <div class="form-group">
       <label for="priceFilter" class="control-label">Price (no more than)</label>
-      <input type="number" id="priceFilter" name="priceFilter" class="form-control" ng-model="filters.price">
+      <input type="number" id="priceFilter" name="priceFilter" class="form-control" ng-model="app.filters.price">
     </div>
     <div class="form-group">
       <label for="ratingFilter" class="control-label">Rating (at least)</label>
-      <input type="number" id="ratingFilter" name="ratingFilter" class="form-control" ng-model="filters.rating">
+      <input type="number" id="ratingFilter" name="ratingFilter" class="form-control" ng-model="app.filters.rating">
     </div>
   </form>
 </div>
 ```
 
-* Initialize the filters to null
+* Initialize the filters to null in the controller
 
 ```js
-$scope.filters = {
+this.filters = {
   price: null,
   rating: null
 };
@@ -33,21 +33,28 @@ $scope.filters = {
 
 * Watch the price and rating values and filter the restaurant list accordingly
 
+
+
 ```js
-$scope.$watchGroup(['filters.price', 'filters.rating', 'restaurants'], function filterRestaurants() {
-  $scope.filteredRestaurants = [];
-  angular.forEach($scope.restaurants, function(restaurant) {
-    if ( ( !$scope.filters.rating || restaurant.rating >= $scope.filters.rating ) &&
-         ( !$scope.filters.price || restaurant.price <= $scope.filters.price ) )
-    {
-      $scope.filteredRestaurants.push(restaurant);
+var filterRestaurants = function() {
+  that.filteredRestaurants = [];
+  angular.forEach(that.restaurants, function(restaurant) {
+    if ( ( !that.filters.rating || restaurant.rating >= that.filters.rating ) &&
+         ( !that.filters.price || restaurant.price <= that.filters.price ) ) {
+      that.filteredRestaurants.push(restaurant);
     }
-  });
-});
+  }
+}
+
+$rootScope.$watchGroup([
+    function() { return that.filters.price; },
+    function() { return that.filters.rating; },
+    function() { return that.restaurants; }
+  ], filterRestaurants);
 ```js
 
 * Change the `ng-repeat` directive to use the `filteredRestaurants`
 
 ```html
-<tr ng-repeat="restaurant in filteredRestaurants | orderBy : sortProperty : sortDirection">
+<tr ng-repeat="restaurant in app.filteredRestaurants | orderBy : app.sortProperty : app.sortDirection">
 ```
