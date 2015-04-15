@@ -19,7 +19,7 @@ angular.module('localStorage', [])
 * Create a `localStorageBinding` service that connects a property on the scope to the localStorage
 
 ```js
-.factory('localStorageBinding', ['localStorage', '$rootScope', function(localStorage, $rootScope) {
+.factory('localStorageBinding', function(localStorage, $rootScope) {
 
   return function(key, defaultValue) {
     defaultValue = JSON.stringify(defaultValue || {});
@@ -32,7 +32,7 @@ angular.module('localStorage', [])
 
     return value;
   };
-}])
+})
 ```
 
 * Load the new `localStorage.js` file
@@ -49,10 +49,10 @@ angular.module('app', ['ngMessages', 'localStorage'])
 
 ```
 
-* Bind the `user` object to the localStorage using the `localStorageBinding` service
+* Bind the `user` property to the localStorage using the `localStorageBinding` service
 
 ```js
-$scope.user = localStorageBinding('foodMe/user', {
+this.user = localStorageBinding('foodMe/user', {
   name: 'Jo Bloggs',
   address: '123, Some Place, Some Where'
 });
