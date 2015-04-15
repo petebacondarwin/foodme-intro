@@ -1,26 +1,24 @@
-angular.module('app', [])
+angular.module('app', ['ngMessages'])
 
-.controller('FoodMeController', ['$scope', function($scope) {
+.controller('AppController', function() {
 
-  $scope.deliveryForm = {
-    visible: true
-  };
+  this.deliveryFormVisible = true;
 
-  $scope.user = {
+  this.user = {
     name: 'Jo Bloggs',
     address: '123, Some Place, Some Where'
   };
 
-  $scope.showDeliveryForm = function() {
-    $scope.deliveryForm.visible = true;
+  this.showDeliveryForm = function() {
+    this.deliveryFormVisible = true;
   };
 
-  $scope.hideDeliveryForm = function() {
-    $scope.deliveryForm.visible = false;
+  this.hideDeliveryForm = function() {
+    this.deliveryFormVisible = false;
   };
 
 
-  $scope.restaurants = [
+  this.restaurants = [
     {
       "price": 3,
       "rating": 3,
@@ -57,28 +55,28 @@ angular.module('app', [])
   ];
 
 
-  $scope.sortProperty = 'name';
-  $scope.sortDirection = false;
+  this.sortProperty = 'name';
+  this.sortDirection = false;
 
-  $scope.sortBy = function(property) {
-    if ( $scope.sortProperty === property ) {
-      $scope.sortDirection = !$scope.sortDirection;
+  this.sortBy = function(property) {
+    if ( this.sortProperty === property ) {
+      this.sortDirection = !this.sortDirection;
     } else {
-      $scope.sortProperty = property;
-      $scope.sortDirection = false;
+      this.sortProperty = property;
+      this.sortDirection = false;
     }
   };
 
-  $scope.getSortClass = function(property) {
-    if ( $scope.sortProperty === property ) {
-      return 'glyphicon glyphicon-chevron-' + ($scope.sortDirection ? 'down' : 'up');
+  this.getSortClass = function(property) {
+    if ( this.sortProperty === property ) {
+      return 'glyphicon glyphicon-chevron-' + (this.sortDirection ? 'down' : 'up');
     }
   };
 
-}])
+})
 
 
-.filter('rating', ['$sce', function($sce) {
+.filter('rating', function($sce) {
   return function(value, glyph) {
     var output = "";
     while(value>0) {
@@ -87,4 +85,4 @@ angular.module('app', [])
     }
     return $sce.trustAsHtml(output);
   };
-}]);
+});
