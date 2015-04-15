@@ -20,10 +20,10 @@
 
 
   <!-- Delivery Info Form -->
-  <div class="row" ng-show="deliveryForm.visible">
+  <div class="row" ng-show="deliveryFormVisible">
     <div class="col-md-12">
       <form role="form" class="well">
-        <a href="" class="pull-right" ng-click="deliveryForm.visible = false">Hide</a>
+        <a href="" class="pull-right" ng-click="deliveryFormVisible = false">Hide</a>
         <legend>Delivery Details</legend>
         <div class="form-group">
           <label for="customerName" class="control-label">Name</label>
@@ -39,10 +39,10 @@
 
 
   <!-- Delivery Info -->
-  <div class="row" ng-hide="deliveryForm.visible">
+  <div class="row" ng-hide="deliveryFormVisible">
     <div class="col-md-12">
       <div class="well">
-        <a href="" class="pull-right" ng-click="deliveryForm.visible = true">Change</a>
+        <a href="" class="pull-right" ng-click="deliveryFormVisible = true">Change</a>
         <strong>Deliver to:</strong><br>
         {{ user.name }}<br>
         {{ user.address }}
