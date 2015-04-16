@@ -54,5 +54,5 @@ http-server
 * Now you can get the restaurant data from the local server
 
 ```js
-  var url = '../data/restaurants.json';
+  var url = '../shared/data/restaurants.json';
 ```
