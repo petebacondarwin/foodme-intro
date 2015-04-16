@@ -1,8 +1,8 @@
 printf -v currentStep "%0*d" 2 $1
-echo ">>>>>>>>>>>> changes in step-$currentStep"
-diff -b -C 2 step-$currentStep step-$currentStep-solution
+echo -e "\n\n\n>>>>>>>>>>>> changes in step-$currentStep\n"
+git diff --no-index step-$currentStep step-$currentStep-solution
 
 let lastStepVal=$1-1
 printf -v lastStep "%0*d" 2 $lastStepVal
-echo ">>>>>>>>>>>> changes between step-$lastStep and step-$currentStep"
-diff -b -C 2 step-$lastStep-solution step-$currentStep
+echo -e "\n\n\n>>>>>>>>>>>> changes between step-$lastStep and step-$currentStep\n"
+git diff --no-index step-$lastStep-solution step-$currentStep
