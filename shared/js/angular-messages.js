@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-local+sha.8a45064
+ * @license AngularJS v1.4.0-local+sha.103a39c
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -124,7 +124,7 @@ var jqLite = angular.element;
  *     <div ng-message="email">Your email address is invalid</div>
  *
  *     <!-- and here are the generic error messages -->
- *     <div ng-messages-include="error-messages"></div>
+ *     <div ng-messages-include="my-custom-messages"></div>
  *   </div>
  * </form>
  * ```
@@ -280,7 +280,7 @@ angular.module('ngMessages', [])
     * </ANY>
     *
     * <!-- or by using element directives -->
-    * <ng-messages for="expression" role="alert>
+    * <ng-messages for="expression" role="alert">
     *   <ng-message when="stringValue">...</ng-message>
     *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
     *   <ng-message when-exp="expressionValue">...</ng-message>
@@ -308,7 +308,7 @@ angular.module('ngMessages', [])
     *       </label>
     *       <pre>myForm.myName.$error = {{ myForm.myName.$error | json }}</pre>
     *
-    *       <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert>
+    *       <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
     *         <div ng-message="required">You did not enter a field</div>
     *         <div ng-message="minlength">Your field is too short</div>
     *         <div ng-message="maxlength">Your field is too long</div>
@@ -497,12 +497,12 @@ angular.module('ngMessages', [])
     * @usage
     * ```html
     * <!-- using attribute directives -->
-    * <ANY ng-messages="expression" role="alert>
+    * <ANY ng-messages="expression" role="alert">
     *   <ANY ng-messages-include="remoteTplString">...</ANY>
     * </ANY>
     *
     * <!-- or by using element directives -->
-    * <ng-messages for="expression" role="alert>
+    * <ng-messages for="expression" role="alert">
     *   <ng-messages-include src="expressionValue1">...</ng-messages-include>
     * </ng-messages>
     * ```
@@ -553,13 +553,13 @@ angular.module('ngMessages', [])
     * @usage
     * ```html
     * <!-- using attribute directives -->
-    * <ANY ng-messages="expression" role="alert>
+    * <ANY ng-messages="expression" role="alert">
     *   <ANY ng-message="stringValue">...</ANY>
     *   <ANY ng-message="stringValue1, stringValue2, ...">...</ANY>
     * </ANY>
     *
     * <!-- or by using element directives -->
-    * <ng-messages for="expression" role="alert>
+    * <ng-messages for="expression" role="alert">
     *   <ng-message when="stringValue">...</ng-message>
     *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
     * </ng-messages>

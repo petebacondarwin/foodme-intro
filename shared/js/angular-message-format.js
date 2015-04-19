@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-local+sha.8a45064
+ * @license AngularJS v1.4.0-local+sha.103a39c
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -105,6 +105,7 @@ function MessageSelectorBase(expressionFn, choices) {
   this.parsedFn['$$watchDelegate'] = function $$watchDelegate(scope, listener, objectEquality) {
     return self.watchDelegate(scope, listener, objectEquality);
   };
+  this.parsedFn.exp = expressionFn.exp;
 }
 
 MessageSelectorBase.prototype.getMessageFn = function getMessageFn(value) {
@@ -871,7 +872,7 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
  *
  * ## Example
  *
- * <example name="ngMessageFormat-example" module="msgFmtExample" deps="angular-messageFormat.min.js">
+ * <example name="ngMessageFormat-example" module="msgFmtExample" deps="angular-message-format.min.js">
  * <file name="index.html">
  *   <div ng-controller="AppController">
  *     <button ng-click="decreaseRecipients()" id="decreaseRecipients">decreaseRecipients</button><br>
@@ -950,7 +951,7 @@ var $$MessageFormatFactory = ['$parse', '$locale', '$sce', '$exceptionHandler', 
 
 var $$interpolateDecorator = ['$$messageFormat', '$delegate', function $$interpolateDecorator($$messageFormat, $interpolate) {
   if ($interpolate['startSymbol']() != "{{" || $interpolate['endSymbol']() != "}}") {
-    throw $interpolateMinErr('nochgmustache', 'angular-messageformat.js currently does not allow you to use custom start and end symbols for interpolation.');
+    throw $interpolateMinErr('nochgmustache', 'angular-message-format.js currently does not allow you to use custom start and end symbols for interpolation.');
   }
   var interpolate = $$messageFormat['interpolate'];
   interpolate['startSymbol'] = $interpolate['startSymbol'];
@@ -962,6 +963,7 @@ var $$interpolateDecorator = ['$$messageFormat', '$delegate', function $$interpo
 /**
  * @ngdoc module
  * @name ngMessageFormat
+ * @packageName angular-message-format
  * @description
  */
 var module = window['angular']['module']('ngMessageFormat', ['ng']);
