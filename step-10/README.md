@@ -36,21 +36,26 @@ this.filters = {
 
 
 ```js
-var filterRestaurants = function() {
-  that.filteredRestaurants = [];
-  angular.forEach(that.restaurants, function(restaurant) {
-    if ( ( !that.filters.rating || restaurant.rating >= that.filters.rating ) &&
-         ( !that.filters.price || restaurant.price <= that.filters.price ) ) {
-      that.filteredRestaurants.push(restaurant);
-    }
-  }
-}
 
-$rootScope.$watchGroup([
-    function() { return that.filters.price; },
-    function() { return that.filters.rating; },
-    function() { return that.restaurants; }
-  ], filterRestaurants);
+.controller('AppController', function(localStorageBinding, $http, $scope) {
+
+  ...
+
+  var filterRestaurants = function() {
+    that.filteredRestaurants = [];
+    angular.forEach(that.restaurants, function(restaurant) {
+      if ( ( !that.filters.rating || restaurant.rating >= that.filters.rating ) &&
+           ( !that.filters.price || restaurant.price <= that.filters.price ) ) {
+        that.filteredRestaurants.push(restaurant);
+      }
+    }s
+  }
+
+  $scope.$watchGroup([
+      function() { return that.filters.price; },
+      function() { return that.filters.rating; },
+      function() { return that.restaurants; }
+    ], filterRestaurants);
 ```js
 
 * Change the `ng-repeat` directive to use the `filteredRestaurants`

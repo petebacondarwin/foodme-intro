@@ -1,6 +1,6 @@
 angular.module('app', ['ngMessages', 'localStorage'])
 
-.controller('AppController', function(localStorageBinding, $http, $rootScope) {
+.controller('AppController', function(localStorageBinding, $http, $scope) {
 
   this.deliveryFormVisible = true;
 
@@ -60,7 +60,7 @@ angular.module('app', ['ngMessages', 'localStorage'])
     });
   };
 
-  $rootScope.$watchGroup([
+  $scope.$watchGroup([
       function() { return that.filters.price; },
       function() { return that.filters.rating; },
       function() { return that.restaurants; }
