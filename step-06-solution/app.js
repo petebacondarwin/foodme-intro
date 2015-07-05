@@ -76,13 +76,13 @@ angular.module('app', [])
 })
 
 
-.filter('rating', function($sce) {
-  return function(value, glyph) {
+.filter('rating', function() {
+  return function(value, symbol) {
     var output = "";
     while(value>0) {
-      output += '<span class="glyphicon glyphicon-' + glyph + '"></span>';
+      output += symbol;
       value -= 1;
     }
-    return $sce.trustAsHtml(output);
+    return output;
   };
 });

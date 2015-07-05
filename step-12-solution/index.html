@@ -109,10 +109,8 @@
               </div>
             </div>
           </td>
-          <td class="price" ng-bind-html="restaurant.price | rating : 'gbp'">
-          </td>
-          <td class="rating" ng-bind-html="restaurant.rating | rating : 'star'">
-          </td>
+          <td class="price">{{ restaurant.price | rating : '£' }}</td>
+          <td class="rating">{{ restaurant.rating | rating : '*' }}</td>
         </tr>
         </tbody>
       </table>

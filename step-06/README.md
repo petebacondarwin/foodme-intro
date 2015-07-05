@@ -2,21 +2,21 @@
 
 Sortable list of restaurants
 
-Create custom filter to display price and rating better:
+Create custom filter to display nicer price and rating values:
 
-* Create a custom `rating` filter in the `app` module - we must use `$sce.trustAsHtml` since we are generating HTML.
-* Use the filter in the price and rating fields, with the `ng-bind-html` directive
+* Create a custom `rating` filter in the `app` module
+* Use the filter in the price and rating fields
 
 ```js
 
-.filter('rating', function($sce) {
-  return function(value, glyph) {
+.filter('rating', function() {
+  return function(value, symbol) {
     var output = "";
     while(value>0) {
-      output += '<span class="glyphicon glyphicon-' + glyph + '"></span>';
+      output += symbol;
       value -= 1;
     }
-    return $sce.trustAsHtml(output);
+    return output;
   };
 });
 
@@ -24,6 +24,5 @@ Create custom filter to display price and rating better:
 
 
 ```html
-<td class="price" ng-bind-html="restaurant.price | rating : 'gbp'">
-</td>
+<td class="price">{{ restaurant.price | rating : '£' }}</td>
 ```

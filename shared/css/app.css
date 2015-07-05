@@ -1,6 +1,8 @@
 
 .price, .rating {
   min-width: 10em;
+  font-weight: bold;
+  font-size: large;
 }
 
 
