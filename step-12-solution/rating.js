@@ -4,33 +4,34 @@ angular.module('rating', [])
   return {
     restrict: 'E',
 
-    scope: {
+    scope: {},
+    bindToController: {
       glyph: '@',
       rating: '=',
       onSelect: '&'
     },
+    controllerAs: 'ctrl',
+    controller: function() {
 
-    link: function(scope, element, attrs) {
+      this.ratings = [1,2,3,4,5];
 
-      scope.ratings = [1,2,3,4,5];
-
-      scope.select = function(value) {
-        scope.rating = value;
-        scope.onSelect();
+      this.select = function(value) {
+        this.rating = value;
+        this.onSelect();
       };
 
-      scope.isSelected = function(value) {
-        return scope.rating >= value;
+      this.isSelected = function(value) {
+        return this.rating >= value;
       };
     },
 
     template:
       '<ul class="fm-rating">' +
-      '  <li ng-repeat="value in ratings" ng-click="select(value)" ' +
-      '      ng-class="{selected: isSelected(value)}">' +
-      '    <span class="glyphicon glyphicon-{{glyph}}"></span>' +
+      '  <li ng-repeat="value in ctrl.ratings" ng-click="ctrl.select(value)" ' +
+      '      ng-class="{selected: ctrl.isSelected(value)}">' +
+      '    <span class="glyphicon glyphicon-{{ctrl.glyph}}"></span>' +
       '  </li>' +
       '</ul>' +
-      '<a ng-click="rating = null">clear</a>'
+      '<a ng-click="ctrl.rating = null">clear</a>'
   };
 });
