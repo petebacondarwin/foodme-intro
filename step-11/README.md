@@ -1,6 +1,6 @@
 # Step 11
 
-Filterable, sortable restaurant list loaded from a REST service
+Filterable, sortable restaurant list loaded from a RESTful service
 
 Display the number of filtered restaurants using ICU Message Format:
 
