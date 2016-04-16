@@ -5,7 +5,7 @@ Simple structured app with code in app.js
 Add a list of restaurants to choose from:
 
 * Initialize a mock list of restaurants in the `AppController`
-* Bind the template to the list of restaurants using `ng-repeat` directive
+* Bind the template to the list of restaurants using the `ng-repeat` directive
 
 
 ```js
