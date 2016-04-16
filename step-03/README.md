@@ -6,6 +6,7 @@ Move the deliveryForm behaviour into a Controller:
 
 * create an `app` module and register a controller called `AppController` in `app.js`
 * load the `app.js` file in the index.html page
+* boot the `app` module using the `ng-app` directive
 * initialize the controller with a deliveryFormVisible property
 * add `showDeliveryForm()` and `hideDeliveryForm()` methods to `AppController`
 * connect the `AppController` to the view using `ng-controller`
