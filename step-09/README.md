@@ -40,17 +40,17 @@ the data from this server.
 * Install a local webserver
 
 ```bash
-npm install -g http-server
+npm install -g lite-server
 ```
 
 * Start the server in the root of the project
 
 ```bash
 cd foodme-intro
-http-server
+lite-server
 ```
 
-* Browse to the application via this server: `http://localhost:8080/step-09`
+* Browse to the application via this server: `http://localhost:3000/step-09/index.html`
 * Now you can get the restaurant data from the local server
 
 ```js
