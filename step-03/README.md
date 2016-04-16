@@ -4,7 +4,7 @@ Dynamically visible delivery form.
 
 Move the deliveryForm behaviour into a Controller:
 
-* create an `app` module and a `AppController` controller in `app.js`
+* create an `app` module and register a controller called `AppController` in `app.js`
 * load the `app.js` file in the index.html page
 * initialize the controller with a deliveryFormVisible property
 * add `showDeliveryForm()` and `hideDeliveryForm()` methods to `AppController`
