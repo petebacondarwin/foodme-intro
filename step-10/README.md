@@ -1,10 +1,10 @@
 # Step 10
 
-List of restaurants loaded from a REST service
+List of restaurants loaded from a RESTful service
 
 Filter the restaurants by price and rating:
 
-* Add a new form to the left of the restaurant list
+* Add a new form to the left of the restaurant list - use `col-md-...` classes to align the columns
 
 ```html
 <div class="col-md-3">
@@ -48,8 +48,8 @@ this.filters = {
            ( !that.filters.price || restaurant.price <= that.filters.price ) ) {
         that.filteredRestaurants.push(restaurant);
       }
-    }s
-  }
+    });
+  };
 
   $scope.$watchGroup([
       function() { return that.filters.price; },
