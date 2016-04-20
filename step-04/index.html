@@ -40,16 +40,11 @@
 
 
   <!-- Delivery Info -->
-  <div class="row" ng-hide="app.deliveryFormVisible">
-    <div class="col-md-12">
-      <div class="well">
-        <a href="" class="pull-right" ng-click="app.showDeliveryForm()">Change</a>
-        <strong>Deliver to:</strong><br>
-        {{ app.user.name }}<br>
-        {{ app.user.address }}
-      </div>
-    </div>
-  </div>
+  <fm-delivery-info
+      user="app.user"
+      on-edit-user="app.showDeliveryForm()"
+      ng-hide="app.deliveryFormVisible">
+  </fm-delivery-info>
 
 
 
@@ -69,7 +64,7 @@
           <td class="description">
             <div class="media">
               <a class="pull-left">
-                <img class="img-rounded" src="../shared/img/restaurants/bateaurouge.jpg">
+                <img class="img-rounded" src="assets/img/restaurants/bateaurouge.jpg">
               </a>
               <div class="media-body">
                 <h4 class="media-heading">Le Bateau Rouge</h4>
