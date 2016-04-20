@@ -3,6 +3,7 @@
 * Step 1 - Add basic Angular bindings to the page
 * Step 2 - Show and hide parts of the page dynamically
 * Step 3 - Move the deliveryForm behaviour into a Controller
+* Step 3a - Convert the Controller and Template into a Component
 * Step 4 - Add a list of restaurants to choose from
 * Step 5 - Implement sorting of the restaurant list
 * Step 6 - Create custom filter to display price and rating better

@@ -16,7 +16,7 @@ Add validation to delivery form:
 * Load the `../js/angular-messages.js` file
 
 ```html
-  <script src="../shared/js/angular-messages.js"></script>
+  <script src="node_modules/angular-messages/angular-messages.js"></script>
 ```
 
 * Add the `ngMessages` modules as a dependency of our `app` module

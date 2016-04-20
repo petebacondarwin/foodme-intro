@@ -7,7 +7,7 @@ Display the number of filtered restaurants using ICU Message Format:
 * Load the `../js/angular-message-format.js` file
 
 ```html
-  <script src="../shared/js/angular-message-format.js"></script>
+  <script src="node_modules/angular-messages/angular-message-format.js"></script>
 ```
 
 * Add the `ngMessageFormat` module as a dependency of our `app` module
