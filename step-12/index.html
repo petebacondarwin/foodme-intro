@@ -59,48 +59,7 @@
 
 
   <!-- Restaurant List -->
-  <div class="row">
-    <div class="col-md-3">
-      <form role="form" class="well" name="app.filterForm">
-        <legend>Filter Restaurants</legend>
-        <div class="form-group">
-          <label for="priceFilter" class="control-label">Price (no more than)</label>
-          <input type="number" id="priceFilter" name="priceFilter" class="form-control" ng-model="app.filters.price">
-        </div>
-        <div class="form-group">
-          <label for="ratingFilter" class="control-label">Rating (at least)</label>
-          <input type="number" id="ratingFilter" name="ratingFilter" class="form-control" ng-model="app.filters.rating">
-        </div>
-      </form>
-    </div>
-    <div class="col-md-9">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th><a href ng-click="app.sortBy('name')">Name <span ng-class="app.getSortClass('name')"></span></a></th>
-          <th><a href ng-click="app.sortBy('price')">Price <span ng-class="app.getSortClass('price')"></span></a></th>
-          <th><a href ng-click="app.sortBy('rating')">Rating <span ng-class="app.getSortClass('rating')"></span></a></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="restaurant in app.filteredRestaurants | orderBy : app.sortProperty : app.sortDirection">
-          <td class="description">
-            <div class="media">
-              <a class="pull-left">
-                <img class="img-rounded" ng-src="assets/img/restaurants/{{restaurant.id}}.jpg">
-              </a>
-              <div class="media-body">
-                <h4 class="media-heading">{{restaurant.name}}</h4>
-                <p>{{restaurant.description}}</p>
-              </div>
-            </div>
-          </td>
-          <td class="price">{{ restaurant.price | rating : '£' }}</td>
-          <td class="rating">{{ restaurant.rating | rating : '*' }}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <fm-restaurant-list></fm-restaurant-list>
+
 </body>
 </html>
