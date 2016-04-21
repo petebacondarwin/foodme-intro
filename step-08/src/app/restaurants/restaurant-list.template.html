@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><a href ng-click="$ctrl.sortBy('name')">Name <span ng-class="$ctrl.getSortClass('name')"></span></a></th>
+        <th><a href ng-click="$ctrl.sortBy('price')">Price <span ng-class="$ctrl.getSortClass('price')"></span></a></th>
+        <th><a href ng-click="$ctrl.sortBy('rating')">Rating <span ng-class="$ctrl.getSortClass('rating')"></span></a></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="restaurant in $ctrl.restaurants | orderBy : $ctrl.sortProperty : $ctrl.sortDirection">
+          <td class="description">
+            <div class="media">
+              <a class="pull-left">
+                <img class="img-rounded"
+                    ng-src="assets/img/restaurants/{{restaurant.id}}.jpg">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">{{restaurant.name}}</h4>
+                <p>{{restaurant.description}}</p>
+              </div>
+            </div>
+          </td>
+          <td class="price">
+            {{restaurant.price}}
+          </td>
+          <td class="rating">
+            {{restaurant.rating}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
