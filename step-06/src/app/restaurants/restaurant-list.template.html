@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><a href>Name</a></th>
+        <th><a href>Price </a></th>
+        <th><a href>Rating </a></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="restaurant in $ctrl.restaurants">
+          <td class="description">
+            <div class="media">
+              <a class="pull-left">
+                <img class="img-rounded"
+                    ng-src="assets/img/restaurants/{{restaurant.id}}.jpg">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">{{restaurant.name}}</h4>
+                <p>{{restaurant.description}}</p>
+              </div>
+            </div>
+          </td>
+          <td class="price">
+            {{restaurant.price}}
+          </td>
+          <td class="rating">
+            {{restaurant.rating}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

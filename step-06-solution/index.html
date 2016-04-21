@@ -50,39 +50,6 @@
 
 
   <!-- Restaurant List -->
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th><a href ng-click="app.sortBy('name')">Name <span ng-class="app.getSortClass('name')"></span></a></th>
-          <th><a href ng-click="app.sortBy('price')">Price <span ng-class="app.getSortClass('price')"></span></a></th>
-          <th><a href ng-click="app.sortBy('rating')">Rating <span ng-class="app.getSortClass('rating')"></span></a></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="restaurant in app.restaurants | orderBy : app.sortProperty : app.sortDirection">
-          <td class="description">
-            <div class="media">
-              <a class="pull-left">
-                <img class="img-rounded" ng-src="assets/img/restaurants/{{restaurant.id}}.jpg">
-              </a>
-              <div class="media-body">
-                <h4 class="media-heading">{{restaurant.name}}</h4>
-                <p>{{restaurant.description}}</p>
-              </div>
-            </div>
-          </td>
-          <td class="price">
-            {{restaurant.price}}
-          </td>
-          <td class="rating">
-            {{restaurant.rating}}
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <fm-restaurant-list></fm-restaurant-list>
 </body>
 </html>
