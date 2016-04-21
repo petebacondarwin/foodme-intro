@@ -1,4 +1,4 @@
-aangular.module('app/restaurants/restaurant-list', [
+angular.module('app/restaurants/restaurant-list', [
   'common/rating/rating-filter'
 ])
 
