@@ -1,24 +1,13 @@
-# Step 9
+# Step 10
 
 Static mock restaurant list, with locally persisted delivery info
 
 Load the restaurant data from a server
 
-* Add the `$http` dependency to the `AppController`
-* Replace the static data with a call to get the restaurant data from server
-
-```js
-.controller('AppController', function($scope, localStorageBinding, $http) {
-
-  var that = this;
-  var url = '...';
-
-  $http.get(url).then(function(response) {
-    that.restaurants = response.data;
-  });
-
-```
-
+* Inject the `$http` dependency into the `FmRestaurantList`
+* Remove the static data from the FmRestaurantList constructor
+* Add a `$onInit` hook that calls `$http` to get the restaurant data from server
+* Specify the url to the restaurant data: on the CORS enabled server or on the local web server
 
 
 ## Remote CORS enabled server
@@ -31,27 +20,10 @@ a CORS enabled server to provide us with the data.
 ```
 
 
-
 ## Locally hosted http server app and data
 
 If we are running the index.html from a webserver then we can also get
 the data from this server.
-
-* Install a local webserver
-
-```bash
-npm install -g lite-server
-```
-
-* Start the server in the root of the project
-
-```bash
-cd foodme-intro
-lite-server
-```
-
-* Browse to the application via this server: `http://localhost:3000/step-09/index.html`
-* Now you can get the restaurant data from the local server
 
 ```js
   var url = '../shared/data/restaurants.json';

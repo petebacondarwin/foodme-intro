@@ -1,10 +1,11 @@
-# Step 6
+# Step 7
 
 Sortable list of restaurants
 
 Create custom filter to display nicer price and rating values:
 
-* Create a custom `rating` filter in the `app` module
+* Create a custom `rating` filter in its own module
+* Add the new module as a dependency of the restaurant-list module
 * Use the filter in the price and rating fields
 
 ```js

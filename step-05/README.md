@@ -1,10 +1,17 @@
-# Step 4
+# Step 5
 
-Simple structured app with code in app.js
+We are able to view and update the delivery info.
 
-Add a list of restaurants to choose from:
+Create a new fmRestaurantList component
 
-* Initialize a mock list of restaurants in the `AppController`
+* Create a new fmRestaurantList component
+* Move the static restaurant list HTML into the template for fmRestaurantList
+* Add the new module as a dependency of the app module
+* Use the fmRestaurantList component in the index template.
+
+Display a data driven list of restaurants using a repeated template
+
+* Initialize a mock list of restaurants in the FmRestaurantList controller.
 * Bind the template to the list of restaurants using the `ng-repeat` directive
 
 
@@ -51,7 +58,7 @@ this.restaurants = [
 
 ```js
 
-<tr ng-repeat="restaurant in app.restaurants">
+<tr ng-repeat="restaurant in $ctrl.restaurants">
   <td class="description">
     <div class="media">
       <a class="pull-left">

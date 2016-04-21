@@ -1,59 +1,16 @@
-# Step 8
+# Step 9
 
 Sortable restaurant list with validated delivery form
 
-Persist the delivery info in the local storage
+Create angular services that persist values to the browser's localStorage.
 
-* Create a new `localStorage` module in `localStorage.js`
+* Create a localStorage service to wrap the browser's localStorage object
+* Create a userService service that stores the user object in localStorage
+* Add the app/customer/user-service module as a dependency to our app module
 
-```js
-angular.module('localStorage', [])
-```
+Use these services to persist changes to the user property of the AppController.
 
-* Create a `localStorage' service to wrap the browser's localStorage object
-
-```js
-.value('localStorage', window.localStorage)
-```
-
-* Create a `localStorageBinding` service that connects a property on the scope to the localStorage
-
-```js
-.factory('localStorageBinding', function(localStorage, $rootScope) {
-
-  return function(key, defaultValue) {
-    defaultValue = JSON.stringify(defaultValue || {});
-
-    var value = JSON.parse(localStorage[key] || defaultValue);
-
-    $rootScope.$watch(function() { return value; }, function() {
-      localStorage[key] = JSON.stringify(value);
-    }, true);
-
-    return value;
-  };
-})
-```
-
-* Load the new `localStorage.js` file
-
-```html
-  <script src="localStorage.js"></script>
-
-```
-
-* Add the new `localStorage` module as a dependency to our `app` module
-
-```js
-angular.module('app', ['ngMessages', 'localStorage'])
-
-```
-
-* Bind the `user` property to the localStorage using the `localStorageBinding` service
-
-```js
-this.user = localStorageBinding('foodMe/user', {
-  name: 'Jo Bloggs',
-  address: '123, Some Place, Some Where'
-});
-```
+* Inject the userService service into the AppController
+* Load the user in the AppController
+* Add a helper method to save the user in the AppController
+* Update the on-save handler to call the new helper method
