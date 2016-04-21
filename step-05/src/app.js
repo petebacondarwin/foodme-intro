@@ -1,4 +1,6 @@
-angular.module('app', [])
+angular.module('app', [
+  'app/customer/delivery-info'
+])
 
 .controller('AppController', function() {
 
