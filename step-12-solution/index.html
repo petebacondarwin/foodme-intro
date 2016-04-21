@@ -25,7 +25,7 @@
   <!-- Delivery Info Form -->
   <fm-user-form
       user="app.user"
-      on-save="app.user = user; app.hideDeliveryForm()"
+      on-save="app.saveUser(user)"
       ng-show="app.deliveryFormVisible">
   </fm-user-form>
 
