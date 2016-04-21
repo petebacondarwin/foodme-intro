@@ -22,30 +22,11 @@
 
 
   <!-- Delivery Info Form -->
-  <div class="row" ng-show="app.deliveryFormVisible">
-    <div class="col-md-12">
-      <form role="form" class="well" name="app.deliveryForm">
-        <a href="" class="pull-right" ng-click="app.hideDeliveryForm()">Hide</a>
-        <legend>Delivery Details</legend>
-        <div class="form-group" ng-class="{'has-error': app.deliveryForm.userName.$invalid}">
-          <label for="customerName" class="control-label">Name</label>
-          <input type="text" id="customerName" class="form-control" ng-model="app.user.name" name="userName" required ng-minlength="5">
-        </div>
-        <div ng-messages="app.deliveryForm.userName.$error">
-          <div ng-message="required" class="alert alert-warning" role="alert">You must enter a name.</div>
-          <div ng-message="minlength" class="alert alert-warning" role="alert">Your name must be at least 5 characters long.</div>
-        </div>
-        <div class="form-group" ng-class="{'has-error': app.deliveryForm.userAddress.$invalid}">
-          <label for="address" class="control-label">Address</label>
-          <input type="text" id="address" class="form-control" ng-model="app.user.address" name="userAddress" required ng-minlength="10">
-        </div>
-        <div ng-messages="app.deliveryForm.userAddress.$error">
-          <div ng-message="required" class="alert alert-warning" role="alert">You must enter an address.</div>
-          <div ng-message="minlength" class="alert alert-warning" role="alert">Your address must be at least 10 characters long.</div>
-        </div>
-      </form>
-    </div>
-  </div>
+  <fm-user-form
+      user="app.user"
+      on-save="app.user = user; app.hideDeliveryForm()"
+      ng-show="app.deliveryFormVisible">
+  </fm-user-form>
 
 
   <!-- Delivery Info -->
