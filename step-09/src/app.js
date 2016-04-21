@@ -1,4 +1,9 @@
-angular.module('app', ['ngMessages'])
+angular.module('app', [
+  'ngMessages',
+  'app/customer/user-form',
+  'app/customer/delivery-info',
+  'app/restaurants/restaurant-list'
+])
 
 .controller('AppController', function() {
 

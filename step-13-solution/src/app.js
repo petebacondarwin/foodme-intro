@@ -1,4 +1,11 @@
-angular.module('app', ['ngMessages', 'ngMessageFormat', 'localStorage', 'rating'])
+angular.module('app', [
+  'ngMessages',
+  'ngMessageFormat',
+  'localStorage',
+  'app/customer/user-form',
+  'app/customer/delivery-info',
+  'app/restaurants/restaurant-list'
+])
 
 .controller('AppController', function(localStorageBinding, $http, $scope) {
 
