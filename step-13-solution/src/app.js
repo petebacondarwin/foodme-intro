@@ -1,4 +1,4 @@
-angular.module('app', ['ngMessages', 'localStorage'])
+angular.module('app', ['ngMessages', 'ngMessageFormat', 'localStorage', 'rating'])
 
 .controller('AppController', function(localStorageBinding, $http, $scope) {
 

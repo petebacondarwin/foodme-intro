@@ -1,6 +1,6 @@
 angular.module('app', ['ngMessages', 'localStorage'])
 
-.controller('AppController', function(localStorageBinding, $http, $scope) {
+.controller('AppController', function(localStorageBinding, $http) {
 
   this.deliveryFormVisible = true;
 
@@ -45,26 +45,6 @@ angular.module('app', ['ngMessages', 'localStorage'])
     }
   };
 
-  this.filters = {
-    price: null,
-    rating: null
-  };
-
-  var filterRestaurants = function() {
-    that.filteredRestaurants = [];
-    angular.forEach(that.restaurants, function(restaurant) {
-      if ( ( !that.filters.rating || restaurant.rating >= that.filters.rating ) &&
-           ( !that.filters.price || restaurant.price <= that.filters.price ) ) {
-        that.filteredRestaurants.push(restaurant);
-      }
-    });
-  };
-
-  $scope.$watchGroup([
-      function() { return that.filters.price; },
-      function() { return that.filters.rating; },
-      function() { return that.restaurants; }
-    ], filterRestaurants);
 })
 
 

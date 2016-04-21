@@ -1,58 +1,59 @@
-# Step 9
+# Step 8
 
-Static mock restaurant list, with locally persisted delivery info
+Sortable restaurant list with validated delivery form
 
-Load the restaurant data from a server
+Persist the delivery info in the local storage
 
-* Add the `$http` dependency to the `AppController`
-* Replace the static data with a call to get the restaurant data from server
-
-```js
-.controller('AppController', function($scope, localStorageBinding, $http) {
-
-  var that = this;
-  var url = '...';
-
-  $http.get(url).then(function(response) {
-    that.restaurants = response.data;
-  });
-
-```
-
-
-
-## Remote CORS enabled server
-
-If we are running the index.html from the file system then we must use
-a CORS enabled server to provide us with the data.
+* Create a new `localStorage` module in `localStorage.js`
 
 ```js
-  var url = 'https://foodme.firebaseio.com/.json';
+angular.module('localStorage', [])
 ```
 
-
-
-## Locally hosted http server app and data
-
-If we are running the index.html from a webserver then we can also get
-the data from this server.
-
-* Install a local webserver
-
-```bash
-npm install -g lite-server
-```
-
-* Start the server in the root of the project
-
-```bash
-cd foodme-intro
-lite-server
-```
-
-* Browse to the application via this server: `http://localhost:3000/step-09/index.html`
-* Now you can get the restaurant data from the local server
+* Create a `localStorage' service to wrap the browser's localStorage object
 
 ```js
-  var url = '../shared/data/restaurants.json';
+.value('localStorage', window.localStorage)
+```
+
+* Create a `localStorageBinding` service that connects a property on the scope to the localStorage
+
+```js
+.factory('localStorageBinding', function(localStorage, $rootScope) {
+
+  return function(key, defaultValue) {
+    defaultValue = JSON.stringify(defaultValue || {});
+
+    var value = JSON.parse(localStorage[key] || defaultValue);
+
+    $rootScope.$watch(function() { return value; }, function() {
+      localStorage[key] = JSON.stringify(value);
+    }, true);
+
+    return value;
+  };
+})
+```
+
+* Load the new `localStorage.js` file
+
+```html
+  <script src="localStorage.js"></script>
+
+```
+
+* Add the new `localStorage` module as a dependency to our `app` module
+
+```js
+angular.module('app', ['ngMessages', 'localStorage'])
+
+```
+
+* Bind the `user` property to the localStorage using the `localStorageBinding` service
+
+```js
+this.user = localStorageBinding('foodMe/user', {
+  name: 'Jo Bloggs',
+  address: '123, Some Place, Some Where'
+});
 ```

@@ -60,23 +60,31 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="restaurant in app.restaurants">
+        <tr>
           <td class="description">
             <div class="media">
               <a class="pull-left">
-                <img class="img-rounded" ng-src="assets/img/restaurants/{{restaurant.id}}.jpg">
+                <img class="img-rounded" src="assets/img/restaurants/bateaurouge.jpg">
               </a>
               <div class="media-body">
-                <h4 class="media-heading">{{restaurant.name}}</h4>
-                <p>{{restaurant.description}}</p>
+                <h4 class="media-heading">Le Bateau Rouge</h4>
+                <p>Fine French dining in a romantic setting. From soupe à l'oignon to coq au vin, let our chef delight you with a local take on authentic favorites.</p>
               </div>
             </div>
           </td>
           <td class="price">
-            {{restaurant.price}}
+            <span class="glyphicon glyphicon-gbp"></span>
+            <span class="glyphicon glyphicon-gbp"></span>
+            <span class="glyphicon glyphicon-gbp"></span>
+            <span class="glyphicon glyphicon-gbp"></span>
+            <span class="glyphicon glyphicon-gbp"></span>
           </td>
           <td class="rating">
-            {{restaurant.rating}}
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
           </td>
         </tr>
         </tbody>

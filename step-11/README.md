@@ -1,29 +1,65 @@
-# Step 11
+# Step 10
 
-Filterable, sortable restaurant list loaded from a RESTful service
+List of restaurants loaded from a RESTful service
 
-Display the number of filtered restaurants using ICU Message Format:
+Filter the restaurants by price and rating:
 
-* Load the `../js/angular-message-format.js` file
+* Add a new form to the left of the restaurant list - use `col-md-...` classes to align the columns
 
 ```html
-  <script src="node_modules/angular-messages/angular-message-format.js"></script>
+<div class="col-md-3">
+  <form role="form" class="well" name="app.filterForm">
+    <legend>Filter Restaurants</legend>
+    <div class="form-group">
+      <label for="priceFilter" class="control-label">Price (no more than)</label>
+      <input type="number" id="priceFilter" name="priceFilter" class="form-control" ng-model="app.filters.price">
+    </div>
+    <div class="form-group">
+      <label for="ratingFilter" class="control-label">Rating (at least)</label>
+      <input type="number" id="ratingFilter" name="ratingFilter" class="form-control" ng-model="app.filters.rating">
+    </div>
+  </form>
+</div>
 ```
 
-* Add the `ngMessageFormat` module as a dependency of our `app` module
+* Initialize the filters to null in the controller
 
 ```js
-angular.module('app', ['ngMessages',  'ngMessageFormat', 'localStorage'])
+this.filters = {
+  price: null,
+  rating: null
+};
 ```
 
-* Add a binding to the length of the `filteredRestaurants` collection using `messageFormat` syntax
+* Watch the price and rating values and filter the restaurant list accordingly
+
+
+
+```js
+
+.controller('AppController', function(localStorageBinding, $http, $scope) {
+
+  ...
+
+  var filterRestaurants = function() {
+    that.filteredRestaurants = [];
+    angular.forEach(that.restaurants, function(restaurant) {
+      if ( ( !that.filters.rating || restaurant.rating >= that.filters.rating ) &&
+           ( !that.filters.price || restaurant.price <= that.filters.price ) ) {
+        that.filteredRestaurants.push(restaurant);
+      }
+    });
+  };
+
+  $scope.$watchGroup([
+      function() { return that.filters.price; },
+      function() { return that.filters.rating; },
+      function() { return that.restaurants; }
+    ], filterRestaurants);
+```js
+
+* Change the `ng-repeat` directive to use the `filteredRestaurants`
 
 ```html
-<div class="alert alert-info" role="alert">
-  {{ app.filteredRestaurants.length, plural,
-    =0 {No restaurants found!}
-    =1 {Only one restaurant found!}
-    other {# restaurants found.}
-  }}
-</div>
+<tr ng-repeat="restaurant in app.filteredRestaurants | orderBy : app.sortProperty : app.sortDirection">
 ```

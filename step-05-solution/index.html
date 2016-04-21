@@ -48,20 +48,19 @@
 
 
 
-
   <!-- Restaurant List -->
   <div class="row">
     <div class="col-md-12">
       <table class="table table-striped">
         <thead>
         <tr>
-          <th><a href ng-click="app.sortBy('name')">Name <span ng-class="app.getSortClass('name')"></span></a></th>
-          <th><a href ng-click="app.sortBy('price')">Price <span ng-class="app.getSortClass('price')"></span></a></th>
-          <th><a href ng-click="app.sortBy('rating')">Rating <span ng-class="app.getSortClass('rating')"></span></a></th>
+          <th><a href>Name</a></th>
+          <th><a href>Price </a></th>
+          <th><a href>Rating </a></th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="restaurant in app.restaurants | orderBy : app.sortProperty : app.sortDirection">
+        <tr ng-repeat="restaurant in app.restaurants">
           <td class="description">
             <div class="media">
               <a class="pull-left">

@@ -1,35 +1,28 @@
-# Step 7
+# Step 6
 
-Sortable restaurant list with basic delivery form
+Sortable list of restaurants
 
-Add validation to delivery form:
+Create custom filter to display nicer price and rating values:
 
-* Give the form a name (`app.deliveryForm`) so that it is attached to the controller
-* Given the inputs names (`userName`, `userAddress`) so that they are accessible in the form object
-* Add `required` and `ng-minlength="..."` validators to the inputs
-* Update the classes on the `form-group` elements when the inputs are invalid
-
-```html
-<div class="form-group" ng-class="{'has-error': app.deliveryForm.userName.$invalid}">
-```
-
-* Load the `../js/angular-messages.js` file
-
-```html
-  <script src="node_modules/angular-messages/angular-messages.js"></script>
-```
-
-* Add the `ngMessages` modules as a dependency of our `app` module
+* Create a custom `rating` filter in the `app` module
+* Use the filter in the price and rating fields
 
 ```js
-angular.module('app', ['ngMessages'])
+
+.filter('rating', function() {
+  return function(value, symbol) {
+    var output = "";
+    while(value>0) {
+      output += symbol;
+      value -= 1;
+    }
+    return output;
+  };
+});
+
 ```
 
-* Use `ng-messages` directive to display errors
 
 ```html
-<div ng-messages="app.deliveryForm.userName.$error">
-  <div ng-message="required" class="alert alert-warning" role="alert">You must enter a name.</div>
-  <div ng-message="minlength" class="alert alert-warning" role="alert">Your name must be at least 5 characters long.</div>
-</div>
+<td class="price">{{ restaurant.price | rating : '£' }}</td>
 ```

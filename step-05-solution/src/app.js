@@ -55,22 +55,4 @@ angular.module('app', [])
   ];
 
 
-  this.sortProperty = 'name';
-  this.sortDirection = false;
-
-  this.sortBy = function(property) {
-    if ( this.sortProperty === property ) {
-      this.sortDirection = !this.sortDirection;
-    } else {
-      this.sortProperty = property;
-      this.sortDirection = false;
-    }
-  };
-
-  this.getSortClass = function(property) {
-    if ( this.sortProperty === property ) {
-      return 'glyphicon glyphicon-chevron-' + (this.sortDirection ? 'down' : 'up');
-    }
-  };
-
 });

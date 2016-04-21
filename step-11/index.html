@@ -60,20 +60,7 @@
 
   <!-- Restaurant List -->
   <div class="row">
-    <div class="col-md-3">
-      <form role="form" class="well" name="app.filterForm">
-        <legend>Filter Restaurants</legend>
-        <div class="form-group">
-          <label for="priceFilter" class="control-label">Price (no more than)</label>
-          <input type="number" id="priceFilter" name="priceFilter" class="form-control" ng-model="app.filters.price">
-        </div>
-        <div class="form-group">
-          <label for="ratingFilter" class="control-label">Rating (at least)</label>
-          <input type="number" id="ratingFilter" name="ratingFilter" class="form-control" ng-model="app.filters.rating">
-        </div>
-      </form>
-    </div>
-    <div class="col-md-9">
+    <div class="col-md-12">
       <table class="table table-striped">
         <thead>
         <tr>
@@ -83,7 +70,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="restaurant in app.filteredRestaurants | orderBy : app.sortProperty : app.sortDirection">
+        <tr ng-repeat="restaurant in app.restaurants | orderBy : app.sortProperty : app.sortDirection">
           <td class="description">
             <div class="media">
               <a class="pull-left">

@@ -73,8 +73,12 @@
               </div>
             </div>
           </td>
-          <td class="price">{{ restaurant.price | rating : '£' }}</td>
-          <td class="rating">{{ restaurant.rating | rating : '*' }}</td>
+          <td class="price">
+            {{restaurant.price}}
+          </td>
+          <td class="rating">
+            {{restaurant.rating}}
+          </td>
         </tr>
         </tbody>
       </table>

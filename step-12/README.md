@@ -1,69 +1,29 @@
-# Step 12
+# Step 11
 
-List of restaurants retrieved from server, sortable and filterable
+Filterable, sortable restaurant list loaded from a RESTful service
 
-Add a cool rating component for use in filtering:
+Display the number of filtered restaurants using ICU Message Format:
 
-* Create a new file `rating.js` containing a `rating` module
-
-```js
-angular.module('rating', [])
-```
-
-* Load the `rating.js` file
+* Load the `../js/angular-message-format.js` file
 
 ```html
-  <script src="rating.js"></script>
-
+  <script src="node_modules/angular-messages/angular-message-format.js"></script>
 ```
 
-* Add the `rating` module as a dependency of our `app` module
+* Add the `ngMessageFormat` module as a dependency of our `app` module
 
 ```js
-angular.module('app', ['ngMessages', 'ngMessageFormat', 'localStorage', 'rating'])
+angular.module('app', ['ngMessages',  'ngMessageFormat', 'localStorage'])
 ```
 
-* Define a `fmRating` component in the `rating` module
-
-```js
-angular.module('rating', [])
-
-.component('fmRating', {
-  bindings: {
-    glyph: '@',
-    rating: '=',
-    onSelect: '&'
-  },
-  template:
-    '<ul class="fm-rating">' +
-    '  <li ng-repeat="value in $ctrl.ratings" ng-click="$ctrl.select(value)" ' +
-    '      ng-class="{selected: $ctrl.isSelected(value)}">' +
-    '    <span class="glyphicon glyphicon-{{$ctrl.glyph}}"></span>' +
-    '  </li>' +
-    '</ul>' +
-    '<a ng-click="$ctrl.rating = null">clear</a>',
-  controller: FmRating
-});
-
-
-function FmRating() {
-  this.ratings = [1,2,3,4,5];
-}
-
-FmRating.prototype.select = function(value) {
-  this.rating = value;
-  this.onSelect();
-};
-
-FmRating.prototype.isSelected = function(value) {
-  return this.rating >= value;
-};
-```
-
-* Replace the input boxes with instance of this component in the Filter Restaurants form
+* Add a binding to the length of the `filteredRestaurants` collection using `messageFormat` syntax
 
 ```html
-<fm-rating rating="app.filters.price" glyph="gbp"></fm-rating>
-...
-<fm-rating rating="app.filters.rating" glyph="star"></fm-rating>
+<div class="alert alert-info" role="alert">
+  {{ app.filteredRestaurants.length, plural,
+    =0 {No restaurants found!}
+    =1 {Only one restaurant found!}
+    other {# restaurants found.}
+  }}
+</div>
 ```

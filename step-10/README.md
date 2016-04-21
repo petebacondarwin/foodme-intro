@@ -1,65 +1,58 @@
-# Step 10
+# Step 9
 
-List of restaurants loaded from a RESTful service
+Static mock restaurant list, with locally persisted delivery info
 
-Filter the restaurants by price and rating:
+Load the restaurant data from a server
 
-* Add a new form to the left of the restaurant list - use `col-md-...` classes to align the columns
+* Add the `$http` dependency to the `AppController`
+* Replace the static data with a call to get the restaurant data from server
 
-```html
-<div class="col-md-3">
-  <form role="form" class="well" name="app.filterForm">
-    <legend>Filter Restaurants</legend>
-    <div class="form-group">
-      <label for="priceFilter" class="control-label">Price (no more than)</label>
-      <input type="number" id="priceFilter" name="priceFilter" class="form-control" ng-model="app.filters.price">
-    </div>
-    <div class="form-group">
-      <label for="ratingFilter" class="control-label">Rating (at least)</label>
-      <input type="number" id="ratingFilter" name="ratingFilter" class="form-control" ng-model="app.filters.rating">
-    </div>
-  </form>
-</div>
+```js
+.controller('AppController', function($scope, localStorageBinding, $http) {
+
+  var that = this;
+  var url = '...';
+
+  $http.get(url).then(function(response) {
+    that.restaurants = response.data;
+  });
+
 ```
 
-* Initialize the filters to null in the controller
+
+
+## Remote CORS enabled server
+
+If we are running the index.html from the file system then we must use
+a CORS enabled server to provide us with the data.
 
 ```js
-this.filters = {
-  price: null,
-  rating: null
-};
+  var url = 'https://foodme.firebaseio.com/.json';
 ```
 
-* Watch the price and rating values and filter the restaurant list accordingly
 
 
+## Locally hosted http server app and data
+
+If we are running the index.html from a webserver then we can also get
+the data from this server.
+
+* Install a local webserver
+
+```bash
+npm install -g lite-server
+```
+
+* Start the server in the root of the project
+
+```bash
+cd foodme-intro
+lite-server
+```
+
+* Browse to the application via this server: `http://localhost:3000/step-09/index.html`
+* Now you can get the restaurant data from the local server
 
 ```js
-
-.controller('AppController', function(localStorageBinding, $http, $scope) {
-
-  ...
-
-  var filterRestaurants = function() {
-    that.filteredRestaurants = [];
-    angular.forEach(that.restaurants, function(restaurant) {
-      if ( ( !that.filters.rating || restaurant.rating >= that.filters.rating ) &&
-           ( !that.filters.price || restaurant.price <= that.filters.price ) ) {
-        that.filteredRestaurants.push(restaurant);
-      }
-    });
-  };
-
-  $scope.$watchGroup([
-      function() { return that.filters.price; },
-      function() { return that.filters.rating; },
-      function() { return that.restaurants; }
-    ], filterRestaurants);
-```js
-
-* Change the `ng-repeat` directive to use the `filteredRestaurants`
-
-```html
-<tr ng-repeat="restaurant in app.filteredRestaurants | orderBy : app.sortProperty : app.sortDirection">
+  var url = '../shared/data/restaurants.json';
 ```

@@ -1,4 +1,4 @@
-angular.module('app', ['ngMessages'])
+angular.module('app', [])
 
 .controller('AppController', function() {
 

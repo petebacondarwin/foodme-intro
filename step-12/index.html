@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="assets/css/app.css">
   <script src="node_modules/angular/angular.js"></script>
   <script src="node_modules/angular-messages/angular-messages.js"></script>
-  <script src="node_modules/angular-message-format/angular-message-format.js"></script>
   <script src="dist/app.js"></script>
 </head>
 <body class="container" ng-app="app" ng-controller="AppController as app">
@@ -58,6 +57,7 @@
 
 
 
+
   <!-- Restaurant List -->
   <div class="row">
     <div class="col-md-3">
@@ -74,13 +74,6 @@
       </form>
     </div>
     <div class="col-md-9">
-      <div class="alert alert-info" role="alert">
-      {{ app.filteredRestaurants.length, plural,
-        =0 {No restaurants found!}
-        =1 {Only one restaurant found!}
-        other {# restaurants found.}
-      }}
-      </div>
       <table class="table table-striped">
         <thead>
         <tr>

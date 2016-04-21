@@ -40,56 +40,20 @@
 
 
   <!-- Delivery Info -->
-  <fm-delivery-info
-      user="app.user"
-      on-edit-user="app.showDeliveryForm()"
-      ng-hide="app.deliveryFormVisible">
-  </fm-delivery-info>
+  <div class="row" ng-hide="app.deliveryFormVisible">
+    <div class="col-md-12">
+      <div class="well">
+        <a href="" class="pull-right" ng-click="app.showDeliveryForm()">Change</a>
+        <strong>Deliver to:</strong><br>
+        {{ app.user.name }}<br>
+        {{ app.user.address }}
+      </div>
+    </div>
+  </div>
 
 
 
   <!-- Restaurant List -->
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th><a href>Name</a></th>
-          <th><a href>Price </a></th>
-          <th><a href>Rating </a></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td class="description">
-            <div class="media">
-              <a class="pull-left">
-                <img class="img-rounded" src="assets/img/restaurants/bateaurouge.jpg">
-              </a>
-              <div class="media-body">
-                <h4 class="media-heading">Le Bateau Rouge</h4>
-                <p>Fine French dining in a romantic setting. From soupe à l'oignon to coq au vin, let our chef delight you with a local take on authentic favorites.</p>
-              </div>
-            </div>
-          </td>
-          <td class="price">
-            <span class="glyphicon glyphicon-gbp"></span>
-            <span class="glyphicon glyphicon-gbp"></span>
-            <span class="glyphicon glyphicon-gbp"></span>
-            <span class="glyphicon glyphicon-gbp"></span>
-            <span class="glyphicon glyphicon-gbp"></span>
-          </td>
-          <td class="rating">
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+
 </body>
 </html>

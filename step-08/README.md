@@ -1,59 +1,35 @@
-# Step 8
+# Step 7
 
-Sortable restaurant list with validated delivery form
+Sortable restaurant list with basic delivery form
 
-Persist the delivery info in the local storage
+Add validation to delivery form:
 
-* Create a new `localStorage` module in `localStorage.js`
-
-```js
-angular.module('localStorage', [])
-```
-
-* Create a `localStorage' service to wrap the browser's localStorage object
-
-```js
-.value('localStorage', window.localStorage)
-```
-
-* Create a `localStorageBinding` service that connects a property on the scope to the localStorage
-
-```js
-.factory('localStorageBinding', function(localStorage, $rootScope) {
-
-  return function(key, defaultValue) {
-    defaultValue = JSON.stringify(defaultValue || {});
-
-    var value = JSON.parse(localStorage[key] || defaultValue);
-
-    $rootScope.$watch(function() { return value; }, function() {
-      localStorage[key] = JSON.stringify(value);
-    }, true);
-
-    return value;
-  };
-})
-```
-
-* Load the new `localStorage.js` file
+* Give the form a name (`app.deliveryForm`) so that it is attached to the controller
+* Given the inputs names (`userName`, `userAddress`) so that they are accessible in the form object
+* Add `required` and `ng-minlength="..."` validators to the inputs
+* Update the classes on the `form-group` elements when the inputs are invalid
 
 ```html
-  <script src="localStorage.js"></script>
-
+<div class="form-group" ng-class="{'has-error': app.deliveryForm.userName.$invalid}">
 ```
 
-* Add the new `localStorage` module as a dependency to our `app` module
+* Load the `../js/angular-messages.js` file
 
-```js
-angular.module('app', ['ngMessages', 'localStorage'])
-
+```html
+  <script src="node_modules/angular-messages/angular-messages.js"></script>
 ```
 
-* Bind the `user` property to the localStorage using the `localStorageBinding` service
+* Add the `ngMessages` modules as a dependency of our `app` module
 
 ```js
-this.user = localStorageBinding('foodMe/user', {
-  name: 'Jo Bloggs',
-  address: '123, Some Place, Some Where'
-});
+angular.module('app', ['ngMessages'])
+```
+
+* Use `ng-messages` directive to display errors
+
+```html
+<div ng-messages="app.deliveryForm.userName.$error">
+  <div ng-message="required" class="alert alert-warning" role="alert">You must enter a name.</div>
+  <div ng-message="minlength" class="alert alert-warning" role="alert">Your name must be at least 5 characters long.</div>
+</div>
 ```

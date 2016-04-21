@@ -1,13 +1,13 @@
-angular.module('app', ['ngMessages', 'localStorage'])
+angular.module('app', ['ngMessages'])
 
-.controller('AppController', function(localStorageBinding) {
+.controller('AppController', function() {
 
   this.deliveryFormVisible = true;
 
-  this.user = localStorageBinding('foodMe/user', {
+  this.user = {
     name: 'Jo Bloggs',
     address: '123, Some Place, Some Where'
-  });
+  };
 
   this.showDeliveryForm = function() {
     this.deliveryFormVisible = true;
