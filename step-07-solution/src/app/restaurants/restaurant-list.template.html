@@ -23,10 +23,10 @@
             </div>
           </td>
           <td class="price">
-            {{restaurant.price}}
+            {{restaurant.price | rating : '£'}}
           </td>
           <td class="rating">
-            {{restaurant.rating}}
+            {{restaurant.rating | rating : '*'}}
           </td>
         </tr>
       </tbody>
