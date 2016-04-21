@@ -7,18 +7,18 @@ angular.module('app/restaurants/restaurant-list', [
   controller: FmRestaurantList
 });
 
-function FmRestaurantList() {
-
-  var that = this;
-  var url = 'https://foodme.firebaseio.com/.json'; // CORS enabled server
-  // var url = '../shared/data/restaurants.json'; // Local webserver
-
-  $http.get(url).then(function(response) {
-    that.restaurants = response.data;
-  });
-
+function FmRestaurantList($http) {
+  this.$http = $http;
   this.sortProperty = 'name';
   this.sortDirection = false;
+}
+
+FmRestaurantList.prototype.$onInit = function() {
+  var _this = this;
+  var url = 'assets/data/restaurants.json';
+  this.$http.get(url).then(function(response) {
+    _this.restaurants = response.data;
+  });
 }
 
 FmRestaurantList.prototype.sortBy = function(property) {
