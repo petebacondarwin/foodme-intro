@@ -19,7 +19,14 @@
     </form>
   </div>
   <div class="col-md-9">
-      <table class="table table-striped">
+    <div class="alert alert-info" role="alert">
+      {{ $ctrl.filteredRestaurants.length, plural,
+        =0 {No restaurants found!}
+        =1 {Only one restaurant found!}
+        other {# restaurants found.}
+      }}
+    </div>
+    <table class="table table-striped">
       <thead>
       <tr>
         <th><a href ng-click="$ctrl.sortBy('name')">Name <span ng-class="$ctrl.getSortClass('name')"></span></a></th>

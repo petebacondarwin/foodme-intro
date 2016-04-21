@@ -1,5 +1,27 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-3">
+    <form role="form" class="well" name="$ctrl.filterForm">
+      <legend>Filter Restaurants</legend>
+      <div class="form-group">
+        <label for="priceFilter" class="control-label">
+           Price (no more than)</label>
+        <fm-rating rating="$ctrl.filters.price" glyph="gbp"></fm-rating>
+      </div>
+      <div class="form-group">
+        <label for="ratingFilter" class="control-label">
+           Rating (at least)</label>
+        <fm-rating rating="$ctrl.filters.rating" glyph="star"></fm-rating>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-9">
+    <div class="alert alert-info" role="alert">
+      {{ $ctrl.filteredRestaurants.length, plural,
+        =0 {No restaurants found!}
+        =1 {Only one restaurant found!}
+        other {# restaurants found.}
+      }}
+    </div>
     <table class="table table-striped">
       <thead>
       <tr>
@@ -9,7 +31,7 @@
       </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="restaurant in $ctrl.restaurants | orderBy : $ctrl.sortProperty : $ctrl.sortDirection">
+        <tr ng-repeat="restaurant in $ctrl.filteredRestaurants | orderBy : $ctrl.sortProperty : $ctrl.sortDirection">
           <td class="description">
             <div class="media">
               <a class="pull-left">

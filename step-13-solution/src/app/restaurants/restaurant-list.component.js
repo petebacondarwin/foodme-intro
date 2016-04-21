@@ -1,5 +1,6 @@
 angular.module('app/restaurants/restaurant-list', [
-  'common/rating/rating-filter'
+  'common/rating/rating-filter',
+  'common/rating/rating-component'
 ])
 
 .component('fmRestaurantList', {

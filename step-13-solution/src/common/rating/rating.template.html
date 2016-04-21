@@ -1,0 +1,7 @@
+<ul class="fm-rating">
+  <li ng-repeat="value in $ctrl.ratings" ng-click="$ctrl.select(value)"
+      ng-class="{selected: $ctrl.rating >= value}">
+    <span class="glyphicon glyphicon-{{$ctrl.glyph}}"></span>
+  </li>
+</ul>
+<a ng-click="$ctrl.rating = null">clear</a>

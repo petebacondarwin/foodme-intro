@@ -1,5 +1,6 @@
 angular.module('app', [
   'ngMessages',
+  'ngMessageFormat',
   'app/customer/user-form',
   'app/customer/delivery-info',
   'app/customer/user-service',
