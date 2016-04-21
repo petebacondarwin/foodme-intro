@@ -14,7 +14,7 @@ cd $BASE
 echo "Removing previous workspace"
 rm -rf workspace/*
 echo "Copying over files from step-$STEP"
-mkdir workspace/src
+mkdir -p workspace/src
 cp -r step-$STEP/ workspace/
 echo "Copying in assets"
 cp -r assets workspace/assets
