@@ -5,8 +5,8 @@
   "scripts": {
     "start": "lite-server",
     "prebuild": "mkdir -p dist",
-    "build": "babel src -o dist/app.js --source-maps",
-    "watch": "babel src -w -o dist/app.js --source-maps"
+    "build": "babel src -o dist/app.js",
+    "watch": "babel src -w -o dist/app.js"
   },
   "author": "Pete Bacon Darwin",
   "license": "MIT",
