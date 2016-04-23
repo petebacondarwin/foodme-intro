@@ -6,7 +6,7 @@
     "start": "lite-server",
     "prebuild": "mkdir -p dist",
     "build": "babel src -o dist/app.js --source-maps",
-    "watch": "watchy -w src -- npm run build"
+    "watch": "babel src -w -o dist/app.js --source-maps"
   },
   "author": "Pete Bacon Darwin",
   "license": "MIT",
@@ -19,7 +19,6 @@
   "devDependencies": {
     "babel-cli": "^6.7.5",
     "fs-extra": "^0.28.0",
-    "lite-server": "^2.2.0",
-    "watchy": "^0.6.6"
+    "lite-server": "^2.2.0"
   }
 }

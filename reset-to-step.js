@@ -27,6 +27,8 @@ function getStep() {
 function clearWorkspaace() {
     console.log('Clearing workspace');
     fs.emptyDirSync(workspacePath());
+    fs.emptyDirSync(workspacePath('src'));
+    fs.emptyDirSync(workspacePath('dist'));
 }
 
 function getPath(filepath) {
